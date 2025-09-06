@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 668454413}
   - component: {fileID: 668454412}
   m_Layer: 0
-  m_Name: Dashhero
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -432,8 +432,8 @@ Transform:
   m_GameObject: {fileID: 668454411}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.05, y: -0.61, z: 0}
-  m_LocalScale: {x: 4.9999175, y: 4.6032333, z: 1.6284254}
+  m_LocalPosition: {x: -7.66, y: -0.98, z: 0}
+  m_LocalScale: {x: 5.012418, y: 4.6032333, z: 1.6284254}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 1323001946}
   - component: {fileID: 1323001945}
   - component: {fileID: 1323001949}
+  - component: {fileID: 1323001950}
   m_Layer: 0
   m_Name: Monser(3)
   m_TagString: Untagged
@@ -590,8 +591,8 @@ Transform:
   m_GameObject: {fileID: 1323001944}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9495, y: -0.3205, z: 0}
-  m_LocalScale: {x: 4.394142, y: 4.394142, z: 4.394142}
+  m_LocalPosition: {x: 7.27, y: -0.63, z: 0}
+  m_LocalScale: {x: -4.4459934, y: 4.394142, z: 4.394142}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -623,6 +624,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1323001950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323001944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508638778d9ae4b42b6c708c8afa9724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 2
 --- !u!1 &2011866761
 GameObject:
   m_ObjectHideFlags: 0
