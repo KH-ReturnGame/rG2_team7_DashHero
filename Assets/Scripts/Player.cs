@@ -16,13 +16,23 @@ public class SannabiStylePlayer : MonoBehaviour
     [Header("대쉬")]
     public float dashImpulse = 80f;      // 순간 힘 세기
     public float dashDuration = 0.2f;    // 무적 지속 시간
-    public float dashCooldown = 1f;
+    public float dashCooldown = 2f;
     private bool isDashing = false;
     private float dashEndTime;
     private float lastDashTime;
 
     private bool isInvincible = false; // 대쉬 중 무적 상태
     private Rigidbody2D rb;
+
+
+
+
+
+    public string stateName; // The name of the Animator state to check (e.g., "Idle", "Run")
+    public int layerIndex = 0;
+
+
+
 
     private Animator anim;
 
@@ -59,6 +69,57 @@ public class SannabiStylePlayer : MonoBehaviour
             if (Time.time >= dashEndTime)
                 EndDash();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (anim != null && !string.IsNullOrEmpty(stateName))
+        {
+            // Check if the current state on the specified layer matches the stateName
+            if (anim.GetCurrentAnimatorStateInfo(layerIndex).IsName(stateName))
+            {
+                Debug.Log(stateName + " is currently active in the Animator.");
+
+                // You can also check if the animation is still in progress within that state
+                // by checking normalizedTime, which goes from 0 at the start to 1 at the end of the state.
+                if (anim.GetCurrentAnimatorStateInfo(layerIndex).normalizedTime < 1.0f)
+                {
+                    Debug.Log(stateName + " is still playing.");
+                }
+                else
+                {
+                    Debug.Log(stateName + " has finished playing.");
+                }
+            }
+            else
+            {
+                Debug.Log(stateName + " is not the active state.");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     void HandleMovement()
@@ -84,17 +145,21 @@ public class SannabiStylePlayer : MonoBehaviour
         // J 키 눌렀을 때 x+ 방향으로 Impulse
         if (Input.GetKeyDown(KeyCode.J) && Time.time >= lastDashTime + dashCooldown)
         {
+            Debug.Log("Is Dash Key Down + Dash CoolTime:");
+            Debug.Log(Time.time >= lastDashTime + dashCooldown);
             StartDash();
         }
     }
 
     void StartDash()
     {
+        Debug.Log("Dash 발동");
         isDashing = true;
         isInvincible = true;
         dashEndTime = Time.time + dashDuration;
         lastDashTime = Time.time;
         anim.SetTrigger("dash");
+        Debug.Log("Dash 애니 발동");
         // 순간 힘 추가 (Impulse)
         rb.AddForce(Vector2.right * dashImpulse, ForceMode2D.Impulse);
     }
