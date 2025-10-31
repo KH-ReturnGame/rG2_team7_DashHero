@@ -5,7 +5,7 @@ AssetOrigin:
   productId: 170422
   packageName: Martial Hero
   packageVersion: 1.0
-  assetPath: Assets/Martial Hero/Sprites/Take Hit.png
+  assetPath: Assets/player/Sprites/Take Hit.png
   uploadId: 372436
 TextureImporter:
   internalIDToNameTable:

@@ -2,12 +2,11 @@
 using UnityEngine;
 
 public class MonsterMove : MonoBehaviour
-{
-    public float attackRange;   // 변수값 정해주기
-    private Transform player;
-    private Animator anim;
-
-    public GameObject projectile;
+{   // 변수값 정해주기
+    public float attackRange;   // 공격 사정거리(플레이어와의 거리)
+    private Transform player;    // Player의 위치를 담을 변수
+    private Animator anim;       // 애니메이션 제어용 변수
+    public GameObject projectile; // 투사체 프리팹 (몬스터가 발사할 오브젝트)
 
 
     void Start()
@@ -21,6 +20,7 @@ public class MonsterMove : MonoBehaviour
     public void Attack()
     {
         GameObject clonedProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+
 
         Debug.Log("뿅");
     }

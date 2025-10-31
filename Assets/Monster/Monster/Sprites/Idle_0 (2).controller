@@ -74,7 +74,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Monster(3)_attack
+  m_Name: Monster_attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -127,7 +127,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Monster(3)_idle
+  m_Name: Monster_idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

@@ -5,7 +5,7 @@ AssetOrigin:
   productId: 170422
   packageName: Martial Hero
   packageVersion: 1.0
-  assetPath: Assets/Martial Hero/Sprites/Run.png
+  assetPath: Assets/player/Sprites/Run.png
   uploadId: 372436
 TextureImporter:
   internalIDToNameTable:
