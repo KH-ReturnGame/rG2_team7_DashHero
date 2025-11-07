@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 241160425}
   - component: {fileID: 241160424}
   - component: {fileID: 241160423}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 668454412}
   - component: {fileID: 668454417}
   - component: {fileID: 668454418}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -289,18 +289,18 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2.31
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &668454413
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -452,6 +452,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 6
+  jumpImpulse: 12
+  groundCheck: {fileID: 668454416}
+  groundCheckRadius: 1.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1323001944
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,11 +639,11 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 136
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1323001950
 MonoBehaviour:
   m_ObjectHideFlags: 0
