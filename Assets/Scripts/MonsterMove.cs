@@ -7,6 +7,7 @@ public class MonsterMove : MonoBehaviour
     private Transform player;    // Player의 위치를 담을 변수
     private Animator anim;       // 애니메이션 제어용 변수
     public GameObject projectile; // 투사체 프리팹 (몬스터가 발사할 오브젝트)
+    private SpriteRenderer spr;
 
 
     void Start()
@@ -15,13 +16,19 @@ public class MonsterMove : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
 
         anim = GetComponent<Animator>();
+
+        spr = GetComponent<SpriteRenderer>();
     }
 
     public void Attack()
     {
-        GameObject clonedProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+   
+        Vector2 playerPosition = player.position; //플레이어의 위치계산
 
 
+        GameObject clonedProjectile = Instantiate(projectile, transform.position, Quaternion.identity);//투사체 생성
+
+        clonedProjectile.GetComponent<Fireball>().Initialize(playerPosition); //투사체 방향설정
         Debug.Log("뿅");
     }
 
@@ -35,11 +42,19 @@ public class MonsterMove : MonoBehaviour
         {
            // Debug.Log("공격가능 및 공격중");
             anim.SetBool("isAttack", true);   // 공격 애니메이션
-        }
+        }   
         else
         {
            //d Debug.Log("공격 불가능");
             anim.SetBool("isAttack", false);  // 대기 애니메이션
         }
+
+
+        if (player.position.x > transform.position.x)
+        {
+           spr.flipX = true; 
+        }
+        else
+            spr.flipX = false;
     }
 }
