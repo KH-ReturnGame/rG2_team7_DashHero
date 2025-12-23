@@ -2,33 +2,42 @@ using UnityEngine;
 
 public class CameraMoving : MonoBehaviour
 {
-    public Transform mainCamera;   // Main Camera 할당
-    private bool isAttached = true;
+    
+    public Transform player;
 
-    private float detachX;         // 떨어질 때 저장되는 x좌표
+    // 카메라가 따라오는 부드러운 속도
+    public float followSpeed = 5f;
+
+    // 이전 프레임 플레이어 X값 저장
+    private float lastPlayerX;
+
+    void Start()
+    {
+        // 첫 시작 시 플레이어 X값 기록
+        lastPlayerX = player.position.x;
+    }
 
     void Update()
     {
-        float move = Input.GetAxisRaw("Horizontal");
-        float playerX = transform.position.x;
+        
+        // 현재 플레이어 X
+        float currentX = player.position.x;
 
-        // 1. 왼쪽으로 이동 → 카메라 분리 + x좌표 저장
-        if (move < 0 && isAttached)
+        // 오른쪽으로 이동 중인지 체크
+        bool movingRight = currentX > lastPlayerX;
+
+        // 오른쪽으로 이동할 때만 카메라가 따라옴
+        if (movingRight)
         {
-            mainCamera.SetParent(null);
-            detachX = playerX;     // 떨어진 시점의 x좌표 저장
-            isAttached = false;
+            // 카메라가 따라가야 할 목표 위치
+            // X도 따라가고, Y도 따라가고, Z는 현재 유지
+            Vector3 targetPos = new Vector3(player.position.x+10, player.position.y+4, transform.position.z);
+
+            // 부드럽게 따라오도록 Lerp 사용
+            transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
         }
 
-        // 2. 오른쪽으로 이동하면서 저장된 x좌표를 지나면 → 다시 붙임
-        if (!isAttached && move >= 0)
-        {
-            if (playerX >= detachX)   // 저장된 x를 다시 지나침
-            {
-                mainCamera.SetParent(this.transform);
-                mainCamera.localPosition = Vector3.zero;  
-                isAttached = true;
-            }
-        }
+        // 이후 비교를 위한 X값 갱신
+        lastPlayerX = currentX;
     }
 }

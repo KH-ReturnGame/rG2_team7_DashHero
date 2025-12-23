@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6db0664ebec357a469b20544b0c6b53a
+guid: 9eb48c945af166b42a5f50542df08e27
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8758385093358795162
-    second: player-removebg-preview 1_0
+      213: 7192060132166834689
+    second: Kuroza_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player-removebg-preview 1_0
+      name: Kuroza_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 21
-        width: 62
-        height: 55
+        x: 0
+        y: 0
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a993ab7a6d80c8970800000000000000
-      internalID: 8758385093358795162
+      spriteID: 10a9d05c5945fc360800000000000000
+      internalID: 7192060132166834689
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      player-removebg-preview 1_0: 8758385093358795162
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
