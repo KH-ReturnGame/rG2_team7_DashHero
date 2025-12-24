@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Kuroza_0: 7192060132166834689
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

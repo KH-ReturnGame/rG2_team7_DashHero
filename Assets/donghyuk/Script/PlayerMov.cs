@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMov : MonoBehaviour
 {
     public float speed = 5f;
     public Camera cam;
