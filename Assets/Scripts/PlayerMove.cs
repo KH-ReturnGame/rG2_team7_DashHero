@@ -132,9 +132,13 @@ public class PlayerMove : MonoBehaviour
         // (공중에서만 제한하려고 이 값을 사용)
         airDashCount++;
 
+        PlayerHealth ph = GetComponent<PlayerHealth>();
+        if (ph != null) ph.isInvincible = true; // 무적 시작
+
         // 쿨타임 시작: 대쉬 잠금
         canDash = false;
 
+       
         // 대쉬 시작 상태로 변경
         isDashing = true;
 
@@ -150,11 +154,10 @@ public class PlayerMove : MonoBehaviour
         // dashDir == 1  : 오른쪽 돌진 대쉬 → 공격 O
         // dashDir == -1 : 왼쪽 회피 대쉬 → 공격 X
         if (dashDir == 1)
-        {
-            DoDashAttack();
-        }
+        
+           
 
-        if (dashDir == 1)
+    
         {
             GetComponent<PlayerAnim>()?.PlayDashAttackAnim();
 
@@ -182,6 +185,8 @@ public class PlayerMove : MonoBehaviour
 
         // 대쉬 끝
         isDashing = false;
+
+        if (ph != null) ph.isInvincible = false; // 무적 종료(대쉬 끝)
 
         // 쿨타임 기다리기
         yield return new WaitForSeconds(dashCooldown);
@@ -223,8 +228,8 @@ public class PlayerMove : MonoBehaviour
     
     {
         // 대쉬 공격 범위(원)도 씬에 표시
-        if (attackPoint != null)
-            Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+if (attackPoint != null)
+    Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
         if (groundCheck == null) return;
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius); //DraWireSphere:선으로된 구체를 씬뷰에 그린것
