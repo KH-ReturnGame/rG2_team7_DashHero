@@ -154,6 +154,17 @@ public class PlayerMove : MonoBehaviour
             DoDashAttack();
         }
 
+        if (dashDir == 1)
+        {
+            GetComponent<PlayerAnim>()?.PlayDashAttackAnim();
+
+            // 애니메이션이 화면에 먼저 반영되도록 잠깐 기다렸다가 데미지 적용
+            yield return null; // 1프레임 대기 (가장 간단)
+                               // yield return new WaitForSeconds(0.02f); // 더 자연스럽게 하려면 이걸로
+
+            DoDashAttack();
+        }
+
         // 대쉬를 "확실하게" 보이게 만들려면 중력을 잠깐 끄는 게 좋음
         // (공중 대쉬가 아래로 떨어지면서 흐려지는 느낌 방지)
         float originalGravity = rb.gravityScale; // 원래 중력 저장
@@ -209,7 +220,11 @@ public class PlayerMove : MonoBehaviour
     }
     // 에디터에서 바닥 체크 원이 보이게(디버깅용)
     void OnDrawGizmosSelected()
+    
     {
+        // 대쉬 공격 범위(원)도 씬에 표시
+        if (attackPoint != null)
+            Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
         if (groundCheck == null) return;
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius); //DraWireSphere:선으로된 구체를 씬뷰에 그린것
