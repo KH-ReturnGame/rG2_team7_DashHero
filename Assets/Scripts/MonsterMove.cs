@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class MonsterMove : MonoBehaviour
@@ -13,7 +12,11 @@ public class MonsterMove : MonoBehaviour
     void Start()
     {
         // Player 태그 붙은 오브젝트 찾기
-        player = GameObject.FindWithTag("Player").transform;
+        GameObject playerObj = GameObject.FindWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+        }
 
         anim = GetComponent<Animator>();
 
@@ -22,8 +25,10 @@ public class MonsterMove : MonoBehaviour
 
     public void Attack()
     {
-   
-        Vector2 playerPosition = player.position; //플레이어의 위치계산
+        // 도중에 플레이어가 사라졌다면 공격 로직 실행 안 함
+        if (player == null) return;
+
+        Vector2 playerPosition = player.transform.position; //플레이어의 위치계산
 
 
         GameObject clonedProjectile = Instantiate(projectile, transform.position, Quaternion.identity);//투사체 생성
@@ -34,27 +39,35 @@ public class MonsterMove : MonoBehaviour
 
     void Update()
     {
-        
+        // 도중에 플레이어가 Destroy 되면 player 변수는 null이 됨. 이를 체크해서 에러 방지.
+        if (player == null)
+        {
+            anim.SetBool("isAttack", false);
+            return;
+        }
+
         // X축 거리만 체크 (좌우 차이)
-        float distanceX = Mathf.Abs(transform.position.x - player.position.x);
+        float distanceX = Mathf.Abs(transform.position.x - player.transform.position.x);
 
         if (distanceX <= attackRange)
         {
-           // Debug.Log("공격가능 및 공격중");
+            // Debug.Log("공격가능 및 공격중");
             anim.SetBool("isAttack", true);   // 공격 애니메이션
-        }   
+        }
         else
         {
-           //d Debug.Log("공격 불가능");
+            //d Debug.Log("공격 불가능");
             anim.SetBool("isAttack", false);  // 대기 애니메이션
         }
 
 
-        if (player.position.x > transform.position.x)
+        if (player.transform.position.x > transform.position.x)
         {
-           spr.flipX = true; 
+            spr.flipX = true;
         }
         else
             spr.flipX = false;
     }
+
+
 }
