@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508638778d9ae4b42b6c708c8afa9724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 8
+  attackRange: 13
   projectile: {fileID: 2063939209769891639, guid: 6d7a4a7a68c65994fbf02d5cb969cccf, type: 3}
 --- !u!114 &5319166684277388192
 MonoBehaviour:

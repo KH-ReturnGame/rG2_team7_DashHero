@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  detectionRange: 5
+  detectionRange: 7
   attackRange: 2
   attackRadius: 1.2
   dashAttackDamage: 1
