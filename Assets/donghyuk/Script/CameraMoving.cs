@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraMoving : MonoBehaviour
 {
     public Transform player;
-    public float followSpeed = 100f;
+    public float followSpeed = 50f;
     
     private float lastPlayerX;
 
