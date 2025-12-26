@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text tmpText;   // TMP 텍스트
 
     float maxX;
+    public static int score;
 
     void Start()
     {
@@ -25,7 +26,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         // 최대 x좌표를 정수로 변환해서 출력
-        int maxXInt = Mathf.FloorToInt(maxX);
-        tmpText.text = "Score: " + maxXInt.ToString();
+        score = Mathf.FloorToInt(maxX);
+        tmpText.text = "Score: " + score.ToString();
     }
 }
